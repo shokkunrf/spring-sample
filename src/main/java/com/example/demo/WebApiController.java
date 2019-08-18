@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @RestController
@@ -24,6 +26,11 @@ public class WebApiController {
     @RequestMapping("/test")
     private String testRequestParam( @RequestParam() String param ) {
         return "受け取ったパラメータ：" + param;
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    private String testRequestBody( @RequestBody String body ) {
+        return "受け取ったリクエストボディ：" + body;
     }
 
 }
